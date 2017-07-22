@@ -48,19 +48,15 @@
 
     function findImageURL(text) {
         
-          console.log("TEXT IS : " + text);
-          //var imageValue="";
-          //var captionValue="";
-          var arr = text.split(" ");
-           console.log("A 0 " + arr[0]);
-      console.log("A 1 " + arr[1]);
-      console.log("A 2 " + arr[2]);
-        
-      
-          var imageValue = arr[1]+arr[2];
-          var captionValue = arr[1]+" "+arr[2];
-          console.log("IMAGE VALUE " + imageValue);
-          console.log("CAPTION : " +captionValue);
+          var imageValue
+          var captionValue
+          
+          switch(text) {
+            case "displaying global strategy":
+              imageValue = "globalstrategy";
+              captionValue = "Hello World";
+          }
+          
           displayImage.call(this,imageValue, captionValue);
         }
 
