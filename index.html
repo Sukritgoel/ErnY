@@ -2,8 +2,9 @@
 <head>
   
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  
   <script type="text/javascript">
-    var accessToken = "55b256c2105f45ca9099c3db973cd4d2",
+    var accessToken = "d5068bf59f2b4a808386fa236bf4a2ee",
       baseUrl = "https://api.api.ai/v1/",
       $speechInput,
       $recBtn,
@@ -12,7 +13,22 @@
       messageCouldntHear = "I couldn't hear you, could you say that again?",
       messageInternalError = "Oh no, there has been an internal server error",
       messageSorry = "I'm sorry, I don't have the answer to that yet.";
+
+      var modal;
+      var modalImg;
+      var captionText;
+      var spanClose;
+
+
     $(document).ready(function() {
+      
+         
+        /*** FUNCTION TO DISPLAY APPROPRIATE IMAGE ON THE MODAL ***/
+      modal = document.getElementById('myModal');
+      modalImg = document.getElementById("img01"); /** getting id of the modal Image **/
+      captionText = document.getElementById("caption"); /** to display the caption inside the modal **/
+      spanClose = document.getElementsByClassName("close")[0];
+
       $speechInput = $("#speech");
       $recBtn = $("#rec");
       $speechInput.keypress(function(event) {
@@ -29,6 +45,46 @@
         return false;
       });
     });
+
+    function findImageURL(text) {
+        
+          console.log("TEXT IS : " + text);
+          //var imageValue="";
+          //var captionValue="";
+          var arr = text.split(" ");
+           console.log("A 0 " + arr[0]);
+      console.log("A 1 " + arr[1]);
+      console.log("A 2 " + arr[2]);
+        
+      
+          var imageValue = arr[1]+arr[2];
+          var captionValue = arr[1]+" "+arr[2];
+          console.log("IMAGE VALUE " + imageValue);
+          console.log("CAPTION : " +captionValue);
+          displayImage.call(this,imageValue, captionValue);
+        }
+
+         /*** FUNCTION TO DISPLAY APPROPRIATE IMAGE ON THE MODAL ***/
+        function displayImage(imageUrl,caption) {
+          
+          modal.style.display = "block";
+            console.log("CLICKED");
+            imageUrl+=".jpg";
+            modalImg.src = imageUrl;
+            captionText.innerHTML = caption;
+            setTimeout(function(){
+            modal.style.display = "none";
+          }, 10000); /** WILL GET CLOSED AUTOMATICALLY AFTER 10 Sec **/
+        }
+        // Get the <span> element that closes the modal
+        
+        // When the user clicks on <span> (x), close the modal
+        spanClose.onclick = function() { 
+          modal.style.display = "none";
+        }
+      
+    
+    
     function startRecognition() {
       recognition = new webkitSpeechRecognition();
       recognition.continuous = false;
@@ -45,6 +101,7 @@
             text += event.results[i][0].transcript;
           }
           setInput(text);
+          
         stopRecognition();
       };
       recognition.onend = function() {
@@ -54,6 +111,7 @@
       recognition.lang = "en-US";
       recognition.start();
     }
+         
   
     function stopRecognition() {
       if (recognition) {
@@ -98,11 +156,27 @@
     function prepareResponse(val) {
       var debugJSON = JSON.stringify(val, undefined, 2),
         spokenResponse = val.result.speech;
+      console.log("SPOKEN RESPONSE IS : " + spokenResponse);
+            console.log("SPOKEN RESPONSE IS : " + val.result.speech);
+      
+      var subString = "displaying";
+          var text = spokenResponse.toLowerCase();
+          console.log(" TEXT TO CHECK : " +text);
+          if (text.indexOf(subString) != -1) {
+    
+            console.log("display found ");
+            findImageURL.call(this,text);
+          } else {
+          console.log("display not found ");
+        }
+      
       respond(spokenResponse);
       debugRespond(debugJSON);
-    }
+    } /// accha hoga sorry
     function debugRespond(val) {
       $("#response").text(val);
+      
+      
     }
     function respond(val) {
       if (val == "") {
@@ -117,7 +191,10 @@
       }
       $("#spokenResponse").addClass("is-active").find(".spoken-response__text").html(val);
     }
+  
+    
   </script>
+  <link href="modal.css" rel="stylesheet">
   <style type="text/css">
     html {
       box-sizing: border-box;
@@ -217,12 +294,6 @@
     <button id="rec" class="btn">Speak</button>
     <div id="spokenResponse" class="spoken-response">
       <div class="spoken-response__text"></div>
-      <script>
-        var x = find(".speech-response__text").html(value);
-        if (x = "Hi Ram, how are you?") {
-          console.log("Hi");
-        }
-      </script>
     </div>
   </div>
   <div class="debug">
@@ -233,10 +304,25 @@
       <textarea id="response" cols="40" rows="20"></textarea>
     </div>
   </div>
+  
+  
+  
+  
+  <div id="myModal" class="modal">
+
+  <!-- The Close Button -->
+  <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+
+  <!-- Modal Content (The Image) -->
+  <img class="modal-content" id="img01">
+
+  <!-- Modal Caption (Image Text) -->
+  <div id="caption"></div>
+</div>
 
   <link href="https://fonts.googleapis.com/css?family=Titillium+Web:200" rel="stylesheet" type="text/css">
-
-  <div id="Onscreen">
+  
+ 
     
 
 </body>
