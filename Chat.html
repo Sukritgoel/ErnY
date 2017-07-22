@@ -216,6 +216,12 @@
     <button id="rec" class="btn">Speak</button>
     <div id="spokenResponse" class="spoken-response">
       <div class="spoken-response__text"></div>
+      <script> 
+        x = document.querySelector(".spoken-response__text").innerText;
+        if (x = "Hey!") {
+          console.log("it worked");
+        }
+      </script>
     </div>
   </div>
   <div class="debug">
