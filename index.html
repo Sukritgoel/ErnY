@@ -17,7 +17,6 @@
       var modalImg;
       var captionText;
       var spanClose;
-      var check;
     $(document).ready(function() {
       
          
@@ -35,14 +34,13 @@
         }
       });
       $recBtn.on("click", function(event) {
- -        switchRecognition();
- -      });
+        switchRecognition();
+      });
       $(".debug__btn").on("click", function() {
         $(this).next().toggleClass("is-active");
         return false;
       });
     });
-    
     function findImageURL(text) {
         
           console.log("TEXT IS : " + text);
@@ -71,19 +69,14 @@
             setTimeout(function(){
             modal.style.display = "none";
           }, 20000); /** WILL GET CLOSED AUTOMATICALLY AFTER 10 Sec **/
-            check = true;
         }
         // Get the <span> element that closes the modal
         
         // When the user clicks on <span> (x), close the modal
-        window.onclick = function() { 
-          if (check = true) {
-            modal.style.display = "none";
-            check = false;
-          } else {
-            $recBtn.click();
-          };
+        spanClose.onclick = function() { 
+          modal.style.display = "none";
         }
+      
     
     
     function startRecognition() {
@@ -194,7 +187,6 @@
   
     
   </script>
-  
   <link href="modal.css" rel="stylesheet">
   <style type="text/css">
     html {
