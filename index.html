@@ -34,7 +34,9 @@
           send();
         }
       });
-      
+      $recBtn.on("click", function(event) {
+ -        switchRecognition();
+ -      });
       $(".debug__btn").on("click", function() {
         $(this).next().toggleClass("is-active");
         return false;
@@ -79,7 +81,7 @@
             modal.style.display = "none";
             check = false;
           } else {
-            switchRecognition();
+            $recBtn.click();
           };
         }
     
