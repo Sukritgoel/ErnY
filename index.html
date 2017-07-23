@@ -33,10 +33,6 @@
           send();
         }
       });
-          
-      window.onclick = function() {
-        $recBtn.click;
-      }
       $recBtn.on("click", function(event) {
         switchRecognition();
       });
@@ -286,7 +282,7 @@
     }
   </style>
 </head>
-<body>
+<body onclick=document.getElementById('rec').click>
    <img src="http://www.ligadonafacul.com.br/wp-content/uploads/2017/03/EY-Interno.png">
   <div class="container">
     <input id="speech" type="text">
