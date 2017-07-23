@@ -33,6 +33,10 @@
           send();
         }
       });
+          
+      window.onclick = function() {
+        $recBtn.click;
+      }
       $recBtn.on("click", function(event) {
         switchRecognition();
       });
@@ -41,10 +45,6 @@
         return false;
       });
     });
-    
-    window.onclick = function() {
-      $recBtn.click;
-    }
     
     function findImageURL(text) {
         
