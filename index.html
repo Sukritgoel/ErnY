@@ -17,6 +17,7 @@
       var modalImg;
       var captionText;
       var spanClose;
+      var check;
     $(document).ready(function() {
       
          
@@ -69,12 +70,18 @@
             setTimeout(function(){
             modal.style.display = "none";
           }, 20000); /** WILL GET CLOSED AUTOMATICALLY AFTER 10 Sec **/
+            check = true;
         }
         // Get the <span> element that closes the modal
         
         // When the user clicks on <span> (x), close the modal
-        spanClose.onclick = function() { 
-          modal.style.display = "none";
+        window.onclick = function() { 
+          if (check = true) {
+            modal.style.display = "none";
+            check = false;
+          } else {
+            $recBtn.click();
+          };
         }
       
     
