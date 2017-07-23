@@ -54,7 +54,11 @@
         
       
           var imageValue = arr[1]+arr[2];
-          var captionValue = arr[1]+" "+arr[2];
+          var captionValue
+          switch(imageValue) {
+            case "globalstrategy":
+              captionValue = "The image above displays the global strategy";
+          }
           console.log("IMAGE VALUE " + imageValue);
           console.log("CAPTION : " +captionValue);
           displayImage.call(this,imageValue, captionValue);
