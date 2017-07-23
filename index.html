@@ -13,13 +13,10 @@
       messageCouldntHear = "I couldn't hear you, could you say that again?",
       messageInternalError = "Oh no, there has been an internal server error",
       messageSorry = "I'm sorry, I don't have the answer to that yet.";
-
       var modal;
       var modalImg;
       var captionText;
       var spanClose;
-
-
     $(document).ready(function() {
       
          
@@ -28,7 +25,6 @@
       modalImg = document.getElementById("img01"); /** getting id of the modal Image **/
       captionText = document.getElementById("caption"); /** to display the caption inside the modal **/
       spanClose = document.getElementsByClassName("close")[0];
-
       $speechInput = $("#speech");
       $recBtn = $("#rec");
       $speechInput.keypress(function(event) {
@@ -45,7 +41,6 @@
         return false;
       });
     });
-
     function findImageURL(text) {
         
           console.log("TEXT IS : " + text);
@@ -63,18 +58,17 @@
           console.log("CAPTION : " +captionValue);
           displayImage.call(this,imageValue, captionValue);
         }
-
          /*** FUNCTION TO DISPLAY APPROPRIATE IMAGE ON THE MODAL ***/
         function displayImage(imageUrl,caption) {
           
           modal.style.display = "block";
             console.log("CLICKED");
-            imageUrl+=".jpg";
+            imageUrl+=".gif";
             modalImg.src = imageUrl;
             captionText.innerHTML = caption;
             setTimeout(function(){
             modal.style.display = "none";
-          }, 10000); /** WILL GET CLOSED AUTOMATICALLY AFTER 10 Sec **/
+          }, 20000); /** WILL GET CLOSED AUTOMATICALLY AFTER 10 Sec **/
         }
         // Get the <span> element that closes the modal
         
@@ -100,8 +94,7 @@
           for (var i = event.resultIndex; i < event.results.length; ++i) {
             text += event.results[i][0].transcript;
           }
-          setInput(text);
-          
+        setInput(text);          
         stopRecognition();
       };
       recognition.onend = function() {
