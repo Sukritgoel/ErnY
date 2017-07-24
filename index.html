@@ -17,6 +17,7 @@
       var captionText;
       var spanClose;
       var check = false;
+      var record = false;
     $(document).ready(function() {
       
          
@@ -25,6 +26,8 @@
       modalImg = document.getElementById("img01"); /** getting id of the modal Image **/
       captionText = document.getElementById("caption"); /** to display the caption inside the modal **/
       spanClose = document.getElementsByClassName("close")[0];
+      canvas = document.getElementById("rec");
+      ctx = canvas.getContext('2d');
       $speechInput = $("#speech");
       $speechInput.keypress(function(event) {
         if (event.which == 13) {
@@ -34,12 +37,35 @@
       });
       $(window).on("click", function(event) {
         switchRecognition();
+        requestAnimationFrame(recordAnimation);
+        record = true;
       });
       $(".debug__btn").on("click", function() {
         $(this).next().toggleClass("is-active");
         return false;
       });
     });
+    function recordAnimation() {
+     if(record = true) {
+        ctx.clearRect(0, 0, width, height);
+        
+        var X = canvas.width / 2;
+        var Y = canvas.height / 2;
+        var R = 20px;
+        ctx.beginPath();
+        ctx.setLineDash([5]);
+        ctx.arc(X, Y, R, 0, 2 * Math.PI, false);
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = '#FF0000';
+        ctx.stroke();
+       
+        ctx.rotate(12*Math.PI/180)
+       
+        requestAnimationFrame(recordAnimation);
+       
+     }
+    }
+    
     function findImageURL(text) {
         
           console.log("TEXT IS : " + text);
@@ -295,8 +321,8 @@
 <body>
    <img src="http://www.ligadonafacul.com.br/wp-content/uploads/2017/03/EY-Interno.png">
   <div class="container">
+    <canvas id="rec" class="canvas" width=50px height=50px></canvas>
     <input id="speech" type="text">
-    <button id="rec" class="btn">Speak</button>
     <div id="spokenResponse" class="spoken-response">
       <div class="spoken-response__text"></div>
     </div>
