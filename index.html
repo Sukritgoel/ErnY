@@ -34,8 +34,8 @@
           send();
         }
       });
-      $(window).keypress(function(e) {
-        if(e.which == 34) {
+      $recBtn.keypress(function(event) {
+        if(event.which == 34) {
            switchRecognition();
         }
       });
