@@ -3,8 +3,6 @@
     border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;
-    position: fixed;
-    margin: 0 auto;
 }
 
 #myImg:hover {opacity: 0.7;}
