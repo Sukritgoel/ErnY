@@ -56,19 +56,17 @@
         
       
           var imageValue = arr[1]+arr[2];
-          var captionValue = arr[1]+" "+arr[2];
           console.log("IMAGE VALUE " + imageValue);
           console.log("CAPTION : " +captionValue);
-          displayImage.call(this,imageValue, captionValue);
+          displayImage.call(this,imageValue);
         }
          /*** FUNCTION TO DISPLAY APPROPRIATE IMAGE ON THE MODAL ***/
-        function displayImage(imageUrl,caption) {
+        function displayImage(imageUrl) {
           
           modal.style.display = "block";
             console.log("CLICKED");
             imageUrl+=".gif";
             modalImg.src = imageUrl;
-            captionText.innerHTML = caption;
             setTimeout(function(){
             modal.style.display = "none";
           }, 20000); /** WILL GET CLOSED AUTOMATICALLY AFTER 10 Sec **/
@@ -347,9 +345,6 @@
 
   <!-- Modal Content (The Image) -->
   <img class="modal-content" id="img01">
-
-  <!-- Modal Caption (Image Text) -->
-  <div id="caption"></div>
 </div>
 
   <link href="https://fonts.googleapis.com/css?family=Titillium+Web:200" rel="stylesheet" type="text/css">
