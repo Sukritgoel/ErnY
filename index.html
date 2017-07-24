@@ -7,7 +7,6 @@
     var accessToken = "d5068bf59f2b4a808386fa236bf4a2ee",
       baseUrl = "https://api.api.ai/v1/",
       $speechInput,
-      $recBtn,
       recognition,
       messageRecording = "Recording...",
       messageCouldntHear = "I couldn't hear you, could you say that again?",
@@ -27,7 +26,6 @@
       captionText = document.getElementById("caption"); /** to display the caption inside the modal **/
       spanClose = document.getElementsByClassName("close")[0];
       $speechInput = $("#speech");
-      $recBtn = $("#rec");
       $speechInput.keypress(function(event) {
         if (event.which == 13) {
           event.preventDefault();
@@ -134,9 +132,6 @@
     function setInput(text) {
       $speechInput.val(text);
       send();
-    }
-    function updateRec() {
-      $recBtn.text(recognition ? "Stop" : "Speak");
     }
     function send() {
       var text = $speechInput.val();
