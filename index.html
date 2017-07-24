@@ -42,29 +42,6 @@
         return false;
       });
     });
-      window.onload = function {
-        requestAnimationFrame(recordAnimation);
-      }
-      function recordAnimation() {
-        ctx.clearRect(0, 0, width, height);
-        
-        var X = canvas.width / 2;
-        var Y = canvas.height / 2;
-        var R = 20px;
-        ctx.beginPath();
-        ctx.setLineDash([5]);
-        ctx.arc(X, Y, R, 0, 2*Math.PI, false);
-        ctx.lineWidth = 3;
-        ctx.strokeStyle = '#070F24';
-        ctx.stroke();
-      
-        if(record = true) {
-          ctx.rotate(12*Math.PI/180)
-        }
-
-        requestAnimationFrame(recordAnimation);
-    }
-    
     function findImageURL(text) {
         
           console.log("TEXT IS : " + text);
@@ -77,11 +54,7 @@
         
       
           var imageValue = arr[1]+arr[2];
-          var captionValue
-          switch(imageValue) {
-            case "globalstrategy":
-              captionValue = "The image above displays the global strategy";
-          }
+          var captionValue = arr[1]+" "+arr[2];
           console.log("IMAGE VALUE " + imageValue);
           console.log("CAPTION : " +captionValue);
           displayImage.call(this,imageValue, captionValue);
@@ -107,7 +80,7 @@
             modal.style.display = "none";
             check = false;
           } else {
-            record = true;
+            document.getElementById('rec').click();
           }
         }
       
@@ -242,9 +215,9 @@
       -webkit-transform: translate(-50%, -50%);
     }
     input {
-      background-color: #D9D9D9;
-      border: 1px solid #000000;
-      color: #000000;
+      background-color: #126077;
+      border: 1px solid #3F7F93;
+      color: #A6CAE6;
       font-family: "Titillium Web";
       font-size: 20px;
       line-height: 43px;
@@ -261,12 +234,12 @@
       -webkit-transition: all 0.35s ease-in;
     }
     input:active, input:focus, textarea:active, textarea:focus {
-      outline: 1px solid 00000;
+      outline: 1px solid #48788B;
     }
     .btn {
-      background-color: #5E5E5E;
-      border: 1px solid #363636;
-      color: #E3E3E3;
+      background-color: #126178;
+      border: 1px solid #549EAF;
+      color: #549EAF;
       cursor: pointer;
       display: inline-block;
       font-family: "Titillium Web";
@@ -308,20 +281,50 @@
       max-height: 400px;
     }
     .spoken-response__text {
-      background-color: #5C5C5C;
-      color: #FFFFFF;
-      padding: 1em;
-    }
-    #caption {
       background-color: #040E23;
       color: #7584A2;
       padding: 1em;
-      -webkit-transition: all 0.35s ease-in;
-     }
     }
   </style>
-</head>
+   <link rel="stylesheet" media="screen" href="css/style.css">
+  </head>
+ 
 <body>
+  
+<!-- count particles -->
+<div class="count-particles">
+  <span class="js-count-particles">--</span> particles
+</div>
+
+<!-- particles.js container -->
+<div id="particles-js"></div>
+
+<!-- scripts -->
+<script src="../particles.js"></script>
+<script src="js/app.js"></script>
+
+<!-- stats.js -->
+<script src="js/lib/stats.js"></script>
+<script>
+  var count_particles, stats, update;
+  stats = new Stats;
+  stats.setMode(0);
+  stats.domElement.style.position = 'absolute';
+  stats.domElement.style.left = '0px';
+  stats.domElement.style.top = '0px';
+  document.body.appendChild(stats.domElement);
+  count_particles = document.querySelector('.js-count-particles');
+  update = function() {
+    stats.begin();
+    stats.end();
+    if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+      count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+    }
+    requestAnimationFrame(update);
+  };
+  requestAnimationFrame(update);
+</script>
+ 
   <img src="http://www.ligadonafacul.com.br/wp-content/uploads/2017/03/EY-Interno.png">
   <div class="container">
     <input id="speech" type="text">
@@ -347,12 +350,11 @@
   <!-- The Close Button -->
   <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
 
-   <!-- Modal Caption (Image Text) -->
-  <div id="caption"></div>
-    
   <!-- Modal Content (The Image) -->
   <img class="modal-content" id="img01">
 
+  <!-- Modal Caption (Image Text) -->
+  <div id="caption"></div>
 </div>
 
   <link href="https://fonts.googleapis.com/css?family=Titillium+Web:200" rel="stylesheet" type="text/css">
