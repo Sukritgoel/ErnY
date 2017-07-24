@@ -34,8 +34,10 @@
           send();
         }
       });
-      $(window).on("click", function(event) {
-        switchRecognition();
+      $(window).keypress( function(event) {
+        if(event.which === 34) {
+           switchRecognition();
+        }
       });
       $(".debug__btn").on("click", function() {
         $(this).next().toggleClass("is-active");
