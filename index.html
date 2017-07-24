@@ -37,7 +37,6 @@
       });
       $(window).on("click", function(event) {
         switchRecognition();
-        record = true;
       });
       $(".debug__btn").on("click", function() {
         $(this).next().toggleClass("is-active");
@@ -109,7 +108,7 @@
             modal.style.display = "none";
             check = false;
           } else {
-            document.getElementById('rec').click();
+            record = true;
           }
         }
       
