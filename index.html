@@ -37,7 +37,6 @@
       });
       $(window).on("click", function(event) {
         switchRecognition();
-        requestAnimationFrame(recordAnimation);
         record = true;
       });
       $(".debug__btn").on("click", function() {
@@ -45,7 +44,10 @@
         return false;
       });
     });
-    function recordAnimation() {
+      window.onload = function {
+        requestAnimationFrame(recordAnimation);
+      }
+      function recordAnimation() {
         ctx.clearRect(0, 0, width, height);
         
         var X = canvas.width / 2;
