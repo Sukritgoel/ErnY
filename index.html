@@ -46,7 +46,6 @@
       });
     });
     function recordAnimation() {
-     if(record = true) {
         ctx.clearRect(0, 0, width, height);
         
         var X = canvas.width / 2;
@@ -54,16 +53,16 @@
         var R = 20px;
         ctx.beginPath();
         ctx.setLineDash([5]);
-        ctx.arc(X, Y, R, 0, 2 * Math.PI, false);
+        ctx.arc(X, Y, R, 0, 2*Math.PI, false);
         ctx.lineWidth = 3;
         ctx.strokeStyle = '#070F24';
         ctx.stroke();
-       
-        ctx.rotate(12*Math.PI/180)
-       
+      
+        if(record = true) {
+          ctx.rotate(12*Math.PI/180)
+        }
+
         requestAnimationFrame(recordAnimation);
-       
-     }
     }
     
     function findImageURL(text) {
