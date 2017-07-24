@@ -34,7 +34,7 @@
           send();
         }
       });
-      $recBtn.keydown(function(event) {
+      $(window).keydown(function(event) {
         if(event.which == 34) {
            switchRecognition();
         }
