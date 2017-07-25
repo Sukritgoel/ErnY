@@ -17,6 +17,7 @@
       var modalImg;
       var captionText;
       var spanClose;
+    
     $(document).ready(function() {
       
          
@@ -51,39 +52,39 @@
           //var imageValue="";
           //var captionValue="";
           var arr = text.split(" ");
-           console.log("A 0 " + arr[0]);
-      console.log("A 1 " + arr[1]);
-      console.log("A 2 " + arr[2]);
+          console.log("A 0 " + arr[0]);
+          console.log("A 1 " + arr[1]);
+          console.log("A 2 " + arr[2]);
         
-      
           var imageValue = arr[1]+arr[2];
           var captionValue = arr[1]+" "+arr[2];
           console.log("IMAGE VALUE " + imageValue);
           console.log("CAPTION : " +captionValue);
           displayImage.call(this,imageValue, captionValue);
         }
-         /*** FUNCTION TO DISPLAY APPROPRIATE IMAGE ON THE MODAL ***/
-        function displayImage(imageUrl,caption) {
+    
+     /*** FUNCTION TO DISPLAY APPROPRIATE IMAGE ON THE MODAL ***/
+     function displayImage(imageUrl,caption) {
           
           modal.style.display = "block";
-            console.log("CLICKED");
-            imageUrl+=".jpg";
-            modalImg.src = imageUrl;
-            captionText.innerHTML = caption;
-            /** WILL GET CLOSED AUTOMATICALLY AFTER 10 Sec **/
-        }
+          console.log("CLICKED");
+          imageUrl+=".jpg";
+          modalImg.src = imageUrl;
+          captionText.innerHTML = caption;
+          /** WILL GET CLOSED AUTOMATICALLY AFTER 10 Sec **/
+      }
         // Get the <span> element that closes the modal
         
         // When the user clicks on <span> (x), close the modal
         window.onkeydown = function() { 
           var keyCode = event.keyCode
           if (keyCode == 33) {
-              modal.style.display = "none";
-              modal2.style.display = "none";
+          modal.style.display = "none";
+          modal2.style.display = "none";
           }
         }
       
-    function findVideoURL(text) {
+     function findVideoURL(text) {
         
           console.log("TEXT IS : " + text);
           //var imageValue="";
@@ -101,14 +102,14 @@
           displayVideo.call(this, videoValue, captionValue);
         }
          /*** FUNCTION TO DISPLAY APPROPRIATE IMAGE ON THE MODAL ***/
-        function displayVideo(videoUrl,caption) {
+     function displayVideo(videoUrl,caption) {
             
-            modal2.style.display = "block";
-            console.log("CLICKED");
-            videoUrl+=".webm";
-            modalVid.src = videoUrl;
-            captionText.innerHTML = caption;
-             /** WILL GET CLOSED AUTOMATICALLY AFTER 10 Sec **/
+           modal2.style.display = "block";
+           console.log("CLICKED");
+           videoUrl+=".webm";
+           modalVid.src = videoUrl;
+           captionText.innerHTML = caption;
+            /** WILL GET CLOSED AUTOMATICALLY AFTER 10 Sec **/
         }
     
     function startRecognition() {
@@ -350,7 +351,6 @@
 
     <!-- Modal Content (The Image/The Video) -->
     <img class="modal-content" id="img01">
-    <video class="modal-content"  id="vid01" controls autoplay style="display:none;">
 
     <!-- Modal Caption (Image Text) -->
     <div id="caption"></div>
