@@ -117,7 +117,7 @@
             /** WILL GET CLOSED AUTOMATICALLY AFTER 10 Sec **/
         }
     
-    function displayVideo(text) {
+    function showPpt(text) {
             
            if(text == "showing ppt"){
            modal3.style.display = "block";
@@ -218,7 +218,7 @@
         };
         if (text.indexOf(subString3) != -1) {
             console.log("powerpoint found");
-            displayPower.call(this,text);
+            showPpt.call(this,text);
         } else {
             console.log("ppt not found ");
         };
