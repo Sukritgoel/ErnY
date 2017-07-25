@@ -131,7 +131,8 @@
              var check = true;
            }
            if(check = true){
-             document.getElementById('myModal3').querySelector('iframe').click(); 
+             document.getElementById('myModal3').querySelector('iframe').contentWindow.click(); 
+             console.log('iframe clicked')
              check = false;
            }
         }
