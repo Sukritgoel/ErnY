@@ -32,7 +32,7 @@
 
 .modal2-content {
     margin: auto;
-    display: none;
+    display: block;
     width: 70vw;
 }
 
