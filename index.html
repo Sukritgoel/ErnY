@@ -22,6 +22,7 @@
          
         /*** FUNCTION TO DISPLAY APPROPRIATE IMAGE ON THE MODAL ***/
       modal = document.getElementById('myModal');
+      modal2 = document.getElementById('myModal2');
       modalImg = document.getElementById("img01"); /** getting id of the modal Image **/
       modalVid = document.getElementById("vid01"); /** getting id of the modal Video **/
       captionText = document.getElementById("caption"); /** to display the caption inside the modal **/
@@ -64,7 +65,6 @@
          /*** FUNCTION TO DISPLAY APPROPRIATE IMAGE ON THE MODAL ***/
         function displayImage(imageUrl,caption) {
             
-            modalImg.style.display = "block";
             modal.style.display = "block";
             console.log("CLICKED");
             imageUrl+=".jpg";
@@ -81,7 +81,7 @@
           var keyCode = event.keyCode
           if (keyCode == 33) {
               modal.style.display = "none";
-   
+              modal2.style.display = "none";
           }
         }
       
@@ -105,8 +105,7 @@
          /*** FUNCTION TO DISPLAY APPROPRIATE IMAGE ON THE MODAL ***/
         function displayVideo(videoUrl,caption) {
             
-            modalVid.style.display = "block";
-            modal.style.display = "block";
+            modal2.style.display = "block";
             console.log("CLICKED");
             videoUrl+=".mp4";
             modalVid.src = videoUrl;
@@ -352,16 +351,30 @@
   
   <div id="myModal" class="modal">
 
-  <!-- The Close Button -->
-  <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+    <!-- The Close Button -->
+    <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
 
-  <!-- Modal Content (The Image/The Video) -->
-  <img class="modal-content" id="img01" style="display:none;">
-  <video class="modal-content"  id="vid01" controls autoplay style="display:none;">
+    <!-- Modal Content (The Image/The Video) -->
+    <img class="modal-content" id="img01">
+    <video class="modal-content"  id="vid01" controls autoplay style="display:none;">
 
-  <!-- Modal Caption (Image Text) -->
-  <div id="caption"></div>
-</div>
+    <!-- Modal Caption (Image Text) -->
+    <div id="caption"></div>
+      
+  </div>
+    
+  <div id="myModal2" class="modal">
+
+    <!-- The Close Button -->
+    <span class="close" onclick="document.getElementById('myModal2').style.display='none'">&times;</span>
+
+    <!-- Modal Content (The Image/The Video) -->
+    <video class="modal2-content"  id="vid01" controls autoplay>
+
+    <!-- Modal Caption (Image Text) -->
+    <div id="caption"></div>
+      
+  </div>
 
   <link href="https://fonts.googleapis.com/css?family=Titillium+Web:200" rel="stylesheet" type="text/css">
   
