@@ -41,7 +41,7 @@
         }
       });
       $(window).keydown(function(event) {
-        if(event.which == 34) {
+        if(event.which == 190) {
             switchRecognition();
         };
       });
@@ -82,10 +82,14 @@
         // When the user clicks on <span> (x), close the modal
         window.onkeydown = function() { 
           var keyCode = event.keyCode
-          if (keyCode == 33) {
+          if (keyCode == 116 || keyCode == 27) {
           modal.style.display = "none";
           modal2.style.display = "none";
           modal3.style.dispay = "none";
+          //moda4.style.display = "none";
+          //modal5.style.display = "none";
+          //modal6.style.dispay = "none";
+          
           }
         }
       
@@ -117,14 +121,41 @@
             /** WILL GET CLOSED AUTOMATICALLY AFTER 10 Sec **/
         }
     
-    function showPpt(text) {
+    //POWERPOINT 1
+    function showPpt1(text) {
             
            if(text == "showing ppt"){
            modal3.style.display = "block";
            console.log("CLICKED again and again");
-            /** WILL GET CLOSED AUTOMATICALLY AFTER 10 Sec **/
            }
         }
+    
+    /*POWERPOINT 2
+    function showPpt2(text) {
+            
+           if(text == ""){
+           modal4.style.display = "block";
+           console.log("CLICKED again and again");
+           }
+        } */
+    
+    /*POWERPOINT 3
+    function showPpt3(text) {
+            
+           if(text == ""){
+           modal5.style.display = "block";
+           console.log("CLICKED again and again and again");
+           }
+        } */
+    
+    /*POWERPOINT 4
+    function showPpt4(text) {
+            
+           if(text == ""){
+           modal6.style.display = "block";
+           console.log("CLICKED again and again and again and again");
+           }
+        } */
     
     function startRecognition() {
       recognition = new webkitSpeechRecognition();
@@ -202,26 +233,58 @@
         var subString1 = "displaying";
         var subString2 = "loading";
         var subString3 = "showing";
+        //var subString4 = "";
+        //var subString5 = "";
+        //var subString6 = "";
+        
         var text = spokenResponse.toLowerCase();
         console.log(" TEXT TO CHECK : " +text);
+        
         if (text.indexOf(subString1) != -1) {
             console.log("display found ");
             findImageURL.call(this,text);
         } else {
             console.log("display not found ");
         };
+      
         if (text.indexOf(subString2) != -1) {
             console.log("video found");
             findVideoURL.call(this,text);
         } else {
             console.log("video not found ");
         };
+      
+      //POWERPOINT 1
         if (text.indexOf(subString3) != -1) {
-            console.log("powerpoint found");
-            showPpt.call(this,text);
+            console.log("powerpoint 1 found");
+            showPpt1.call(this,text);
         } else {
-            console.log("ppt not found ");
+            console.log("ppt 1 not found ");
         };
+      
+      /*POWERPOINT 2
+        if (text.indexOf(subString4) != -1) {
+            console.log("powerpoint 2 found");
+            showPpt2.call(this,text);
+        } else {
+            console.log("ppt 2 not found ");
+        }; */
+      
+      /*POWERPOINT 3
+        if (text.indexOf(subString5) != -1) {
+            console.log("powerpoint 3 found");
+            showPpt3.call(this,text);
+        } else {
+            console.log("ppt 3 not found ");
+        }; */
+      
+      /*POWERPOINT 4
+        if (text.indexOf(subString6) != -1) {
+            console.log("powerpoint 4 found");
+            showPpt4.call(this,text);
+        } else {
+            console.log("ppt 4 not found ");
+        }; */
       
       respond(spokenResponse);
       debugRespond(debugJSON);
@@ -410,7 +473,43 @@
     <!-- Modal Caption (Image Text) -->
     <div id="caption"></div>
       
-  </div>
+   </div>
+    
+   <!-- 2ND POWER POINT
+   <div id="myModal4" class="modal">
+
+    <span class="close" onclick="document.getElementById('myModal3').style.display='none'">&times;</span>
+
+    <iframe src='https://onedrive.live.com/embed?cid=4B2BD9E769E24BB6&resid=4B2BD9E769E24BB6%21153&authkey=ACQJdbBG96x1NOQ&em=2&wdAr=1.7777777777777777' align='middle' frameborder='0'>This is an embedded <a target='_blank' href='https://office.com'>Microsoft Office</a> presentation, powered by <a target='_blank' href='https://office.com/webapps'>Office Online</a>.</iframe>
+    
+    <div id="caption"></div> 
+    
+   </div>
+   -->
+   
+   <!-- 3RD POWER POINT
+   <div id="myModal5" class="modal">
+
+    <span class="close" onclick="document.getElementById('myModal3').style.display='none'">&times;</span>
+
+    <iframe src='https://onedrive.live.com/embed?cid=4B2BD9E769E24BB6&resid=4B2BD9E769E24BB6%21153&authkey=ACQJdbBG96x1NOQ&em=2&wdAr=1.7777777777777777' align='middle' frameborder='0'>This is an embedded <a target='_blank' href='https://office.com'>Microsoft Office</a> presentation, powered by <a target='_blank' href='https://office.com/webapps'>Office Online</a>.</iframe>
+    
+    <div id="caption"></div> 
+    
+   </div>
+   -->
+   
+   <!-- 4TH POWER POINT
+   <div id="myModal6" class="modal">
+
+    <span class="close" onclick="document.getElementById('myModal3').style.display='none'">&times;</span>
+
+    <iframe src='https://onedrive.live.com/embed?cid=4B2BD9E769E24BB6&resid=4B2BD9E769E24BB6%21153&authkey=ACQJdbBG96x1NOQ&em=2&wdAr=1.7777777777777777' align='middle' frameborder='0'>This is an embedded <a target='_blank' href='https://office.com'>Microsoft Office</a> presentation, powered by <a target='_blank' href='https://office.com/webapps'>Office Online</a>.</iframe>
+    
+    <div id="caption"></div> 
+    
+   </div>
+   -->
 
   <link href="https://fonts.googleapis.com/css?family=Titillium+Web:200" rel="stylesheet" type="text/css">
   
