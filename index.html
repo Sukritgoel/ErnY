@@ -51,9 +51,9 @@
           //var imageValue="";
           //var captionValue="";
           var arr = text.split(" ");
-           console.log("A 0 " + arr[0]);
-      console.log("A 1 " + arr[1]);
-      console.log("A 2 " + arr[2]);
+          console.log("A 0 " + arr[0]);
+          console.log("A 1 " + arr[1]);
+          console.log("A 2 " + arr[2]);
         
       
           var imageValue = arr[1]+arr[2];
@@ -111,7 +111,7 @@
             modalVid.src = videoUrl;
             captionText.innerHTML = caption;
             setTimeout(function(){
-            modal.style.display = "none";
+            modal2.style.display = "none";
           }, 20000); /** WILL GET CLOSED AUTOMATICALLY AFTER 10 Sec **/
         }
     
@@ -369,7 +369,7 @@
     <span class="close" onclick="document.getElementById('myModal2').style.display='none'">&times;</span>
 
     <!-- Modal Content (The Image/The Video) -->
-    <video class="modal2-content"  id="vid01" controls autoplay>
+    <video class="modal2-content"  id="vid01" controls autoplay type="video/mp4">
 
     <!-- Modal Caption (Image Text) -->
     <div id="caption"></div>
