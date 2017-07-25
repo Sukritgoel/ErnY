@@ -24,9 +24,15 @@
 }
 
 /* Modal Content (Image) */
-.modal-content, .modal2-content {
+.modal-content {
     margin: auto;
     display: block;
+    width: 70vw;
+}
+
+.modal2-content {
+    margin: auto;
+    display: none;
     width: 70vw;
 }
 
