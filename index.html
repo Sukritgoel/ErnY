@@ -23,6 +23,7 @@
         /*** FUNCTION TO DISPLAY APPROPRIATE IMAGE ON THE MODAL ***/
       modal = document.getElementById('myModal');
       modalImg = document.getElementById("img01"); /** getting id of the modal Image **/
+      modalVid = document.getElementById("vid01"); /** getting id of the modal Video **/
       captionText = document.getElementById("caption"); /** to display the caption inside the modal **/
       spanClose = document.getElementsByClassName("close")[0];
       $speechInput = $("#speech");
@@ -62,8 +63,9 @@
         }
          /*** FUNCTION TO DISPLAY APPROPRIATE IMAGE ON THE MODAL ***/
         function displayImage(imageUrl,caption) {
-          
-          modal.style.display = "block";
+            
+            modalImg.style.display = "block";
+            modal.style.display = "block";
             console.log("CLICKED");
             imageUrl+=".jpg";
             modalImg.src = imageUrl;
@@ -83,7 +85,36 @@
           }
         }
       
-    
+    function findVideoURL(text) {
+        
+          console.log("TEXT IS : " + text);
+          //var imageValue="";
+          //var captionValue="";
+          var arr = text.split(" ");
+          console.log("A 0 " + arr[0]);
+          console.log("A 1 " + arr[1]);
+          console.log("A 2 " + arr[2]);
+        
+      
+          var videoValue = arr[1]+arr[2];
+          var captionValue = arr[1]+" "+arr[2];
+          console.log("IMAGE VALUE " + imageValue);
+          console.log("CAPTION : " +captionValue);
+          displayVideo.call(this, videoValue, captionValue);
+        }
+         /*** FUNCTION TO DISPLAY APPROPRIATE IMAGE ON THE MODAL ***/
+        function displayVideo(videoUrl,caption) {
+            
+            modalVid.style.display = "block";
+            modal.style.display = "block";
+            console.log("CLICKED");
+            videoUrl+=".mp4";
+            modalVid.src = videoUrl;
+            captionText.innerHTML = caption;
+            setTimeout(function(){
+            modal.style.display = "none";
+          }, 20000); /** WILL GET CLOSED AUTOMATICALLY AFTER 10 Sec **/
+        }
     
     function startRecognition() {
       recognition = new webkitSpeechRecognition();
@@ -158,15 +189,23 @@
       console.log("SPOKEN RESPONSE IS : " + spokenResponse);
             console.log("SPOKEN RESPONSE IS : " + val.result.speech);
       
-      var subString = "displaying";
+      var subString1 = "displaying";
+      var subString2 = "playing";
           var text = spokenResponse.toLowerCase();
           console.log(" TEXT TO CHECK : " +text);
-          if (text.indexOf(subString) != -1) {
+          if (text.indexOf(subString1) != -1) {
     
             console.log("display found ");
             findImageURL.call(this,text);
           } else {
           console.log("display not found ");
+        }
+          if (text.indexOf(subString2) != -1) {
+    
+            console.log("video found ");
+            findVideoURL.call(this,text);
+          } else {
+          console.log("video not found ");
         }
       
       respond(spokenResponse);
@@ -316,8 +355,9 @@
   <!-- The Close Button -->
   <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
 
-  <!-- Modal Content (The Image) -->
+  <!-- Modal Content (The Image/The Video) -->
   <img class="modal-content" id="img01">
+  <video class="modal-content  id="vid01" controls autoplay>
 
   <!-- Modal Caption (Image Text) -->
   <div id="caption"></div>
