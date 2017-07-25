@@ -83,9 +83,10 @@
         window.onkeydown = function() { 
           var keyCode = event.keyCode
           if (keyCode == 116 || keyCode == 27) {
-          modal.style.display = "none";
-          modal2.style.display = "none";
-          modal3.style.display = "none";
+          //modal.style.display = "none";
+          //modal2.style.display = "none";
+          //modal3.style.display = "none";
+          spanClose.click();
           //moda4.style.display = "none";
           //modal5.style.display = "none";
           //modal6.style.display = "none";
@@ -131,7 +132,7 @@
              var check = true;
            }
            if(check = true){
-             document.getElementById('myModal3').querySelector('iframe').contentWindow.click();
+             modal3.querySelector('iframe').contentWindow.click();
              console.log('iframe clicked');
              check = false;
            }
