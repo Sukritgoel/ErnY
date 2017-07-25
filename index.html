@@ -107,7 +107,7 @@
             
             modal2.style.display = "block";
             console.log("CLICKED");
-            videoUrl+=".mp4";
+            videoUrl+=".webm";
             modalVid.src = videoUrl;
             captionText.innerHTML = caption;
             setTimeout(function(){
@@ -367,7 +367,7 @@
     <span class="close" onclick="document.getElementById('myModal2').style.display='none'">&times;</span>
 
     <!-- Modal Content (The Image/The Video) -->
-    <video class="modal2-content" id="vid01" controls autoplay type="video/mp4" width="70vw">
+    <video class="modal2-content" id="vid01" controls type="video/webm">
 
     <!-- Modal Caption (Image Text) -->
     <div id="caption"></div>
