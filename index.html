@@ -51,9 +51,9 @@
           //var imageValue="";
           //var captionValue="";
           var arr = text.split(" ");
-          console.log("A 0 " + arr[0]);
-          console.log("A 1 " + arr[1]);
-          console.log("A 2 " + arr[2]);
+           console.log("A 0 " + arr[0]);
+      console.log("A 1 " + arr[1]);
+      console.log("A 2 " + arr[2]);
         
       
           var imageValue = arr[1]+arr[2];
@@ -64,8 +64,8 @@
         }
          /*** FUNCTION TO DISPLAY APPROPRIATE IMAGE ON THE MODAL ***/
         function displayImage(imageUrl,caption) {
-            
-            modal.style.display = "block";
+          
+          modal.style.display = "block";
             console.log("CLICKED");
             imageUrl+=".jpg";
             modalImg.src = imageUrl;
@@ -188,24 +188,22 @@
       console.log("SPOKEN RESPONSE IS : " + spokenResponse);
             console.log("SPOKEN RESPONSE IS : " + val.result.speech);
       
-      var subString1 = "displaying";
-      var subString2 = "playing";
-          var text = spokenResponse.toLowerCase();
-          console.log(" TEXT TO CHECK : " +text);
-          if (text.indexOf(subString1) != -1) {
-    
+        var subString1 = "displaying";
+        var subString2 = "playing";
+        var text = spokenResponse.toLowerCase();
+        console.log(" TEXT TO CHECK : " +text);
+        if (text.indexOf(subString1) != -1) {
             console.log("display found ");
             findImageURL.call(this,text);
-          } else {
-          console.log("display not found ");
-        }
-          if (text.indexOf(subString2) != -1) {
-    
+        } else {
+            console.log("display not found ");
+        };
+        if (text.indexOf(subString2) != -1) {
             console.log("video found");
             findVideoURL.call(this,text);
-          } else {
-          console.log("video not found ");
-        }
+        } else {
+            console.log("video not found ");
+        };
       
       respond(spokenResponse);
       debugRespond(debugJSON);
