@@ -67,6 +67,7 @@
      function displayImage(imageUrl,caption) {
           
           modal.style.display = "block";
+          document.getElementById("close2").click();
           console.log("CLICKED");
           imageUrl+=".jpg";
           modalImg.src = imageUrl;
@@ -81,7 +82,6 @@
           if (keyCode == 33) {
           modal.style.display = "none";
           modal2.style.display = "none";
-          document.querySelector(".modal2-content").style.display = "none";
           }
         }
       
@@ -106,7 +106,6 @@
      function displayVideo(videoUrl,caption) {
             
            modal2.style.display = "block";
-           document.querySelector(".modal2-content").style.display = "block";
            console.log("CLICKED");
            videoUrl+=".webm";
            modalVid.src = videoUrl;
@@ -362,7 +361,7 @@
   <div id="myModal2" class="modal">
 
     <!-- The Close Button -->
-    <span class="close" onclick="document.getElementById('myModal2').style.display='none'">&times;</span>
+    <span class="close" onclick="document.getElementById('myModal2').style.display='none'" id="close2">&times;</span>
 
     <!-- Modal Content (The Image/The Video) -->
     <video class="modal2-content" id="vid01" controls type="video/webm">
