@@ -125,6 +125,7 @@
     function showPpt1(text) {
             
            if(text == "showing ppt"){
+           document.getElementById("iframe1")[0].contentWindow.document.body.focus();
            modal3.style.display = "block";
            console.log("CLICKED again and again");
            }
@@ -468,7 +469,7 @@
     <span class="close" onclick="document.getElementById('myModal3').style.display='none'">&times;</span>
 
     <!-- Modal Content (The Image/The Video) -->
-    <iframe autofocus="true" src='https://onedrive.live.com/embed?cid=4B2BD9E769E24BB6&resid=4B2BD9E769E24BB6%21153&authkey=ACQJdbBG96x1NOQ&em=2&wdAr=1.7777777777777777' align='middle' frameborder='0'>This is an embedded <a target='_blank' href='https://office.com'>Microsoft Office</a> presentation, powered by <a target='_blank' href='https://office.com/webapps'>Office Online</a>.</iframe>
+    <iframe id="iframe1" src='https://onedrive.live.com/embed?cid=4B2BD9E769E24BB6&resid=4B2BD9E769E24BB6%21153&authkey=ACQJdbBG96x1NOQ&em=2&wdAr=1.7777777777777777' align='middle' frameborder='0'>This is an embedded <a target='_blank' href='https://office.com'>Microsoft Office</a> presentation, powered by <a target='_blank' href='https://office.com/webapps'>Office Online</a>.</iframe>
     
     <!-- Modal Caption (Image Text) -->
     <div id="caption"></div>
