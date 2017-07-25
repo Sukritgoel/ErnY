@@ -17,7 +17,6 @@
       var modalImg;
       var captionText;
       var spanClose;
-      var check = false;
     $(document).ready(function() {
       
          
@@ -36,8 +35,8 @@
       });
       $(window).keydown(function(event) {
         if(event.which == 34) {
-           switchRecognition();
-        }
+            switchRecognition();
+        };
       });
       $(".debug__btn").on("click", function() {
         $(this).next().toggleClass("is-active");
@@ -66,18 +65,23 @@
           
           modal.style.display = "block";
             console.log("CLICKED");
-            imageUrl+=".gif";
+            imageUrl+=".jpg";
             modalImg.src = imageUrl;
             captionText.innerHTML = caption;
             setTimeout(function(){
             modal.style.display = "none";
           }, 20000); /** WILL GET CLOSED AUTOMATICALLY AFTER 10 Sec **/
-            check = true;
         }
         // Get the <span> element that closes the modal
         
         // When the user clicks on <span> (x), close the modal
-        
+        window.onkeydown = function() { 
+          var keyCode = event.keyCode
+          if (keyCode == 33) {
+              modal.style.display = "none";
+   
+          }
+        }
       
     
     
@@ -286,39 +290,6 @@
  
 <body>
   
-<!-- count particles -->
-<div class="count-particles">
-  <span class="js-count-particles">--</span> particles
-</div>
-
-<!-- particles.js container -->
-<div id="particles-js"></div>
-
-<!-- scripts -->
-<script src="../particles.js"></script>
-<script src="js/app.js"></script>
-
-<!-- stats.js -->
-<script src="js/lib/stats.js"></script>
-<script>
-  var count_particles, stats, update;
-  stats = new Stats;
-  stats.setMode(0);
-  stats.domElement.style.position = 'absolute';
-  stats.domElement.style.left = '0px';
-  stats.domElement.style.top = '0px';
-  document.body.appendChild(stats.domElement);
-  count_particles = document.querySelector('.js-count-particles');
-  update = function() {
-    stats.begin();
-    stats.end();
-    if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
-      count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
-    }
-    requestAnimationFrame(update);
-  };
-  requestAnimationFrame(update);
-</script>
  
   <img src="http://www.ligadonafacul.com.br/wp-content/uploads/2017/03/EY-Interno.png">
   <div class="container">
@@ -347,7 +318,7 @@
 
   <!-- Modal Content (The Image) -->
   <img class="modal-content" id="img01">
-  
+
   <!-- Modal Caption (Image Text) -->
   <div id="caption"></div>
 </div>
