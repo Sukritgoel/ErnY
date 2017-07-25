@@ -67,7 +67,7 @@
      function displayImage(imageUrl,caption) {
           
           modal.style.display = "block";
-          spanClose.click();
+          document.getElementById('myModal2').style.display='none';
           console.log("CLICKED");
           imageUrl+=".jpg";
           modalImg.src = imageUrl;
