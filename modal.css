@@ -24,16 +24,15 @@
 }
 
 /* Modal Content (Image) */
-.modal-content {
+.modal-content, .modal2-content {
     margin: auto;
     display: block;
     width: 70vw;
 }
 
-.modal2-content, .modal3-content {
+.modal3-content {
     margin: auto;
     display: block;
-    width: 70vw;
 }
 
 /* Caption of Modal Image (Image Text) - Same Width as the Image */
