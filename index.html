@@ -118,8 +118,12 @@
            console.log("CLICKED again");
            videoUrl+=".webm";
            modalVid.src = videoUrl;
+            /** Video will play after three seconds **/
+           setTimeout(function() {
+             document.getElementById('vid01').play();
+             console.log("video played");
+           }, 3000) 
            captionText.innerHTML = caption;
-            /** WILL GET CLOSED AUTOMATICALLY AFTER 10 Sec **/
         }
     
     //POWERPOINT 1
