@@ -4,7 +4,8 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   
   <script type="text/javascript">
-    var accessToken = "d5068bf59f2b4a808386fa236bf4a2ee",
+      
+      var accessToken = "d5068bf59f2b4a808386fa236bf4a2ee",
       baseUrl = "https://api.api.ai/v1/",
       $speechInput,
       $recBtn,
@@ -20,20 +21,26 @@
       var modal2;
       var modalVid;
       var modal3;
+      //var modal4, modal5, modal6;
     
-    $(document).ready(function() {
+$(document).ready(function() {
       
          
-        /*** FUNCTION TO DISPLAY APPROPRIATE IMAGE ON THE MODAL ***/
+      /*** FUNCTION TO DISPLAY APPROPRIATE IMAGE ON THE MODAL ***/
       modal = document.getElementById('myModal');
       modal2 = document.getElementById('myModal2');
       modal3 = document.getElementById('myModal3');
+      //modal4 = document.getElementById('myModal4');
+      //modal5 = document.getElementById('myModal5');
+      //modal6 = document.getElementById('myModal6');
       modalImg = document.getElementById("img01"); /** getting id of the modal Image **/
       modalVid = document.getElementById("vid01"); /** getting id of the modal Video **/
       captionText = document.getElementById("caption"); /** to display the caption inside the modal **/
       spanClose = document.getElementsByClassName("close")[0];
+        
       $speechInput = $("#speech");
       $recBtn = $("#rec");
+        
       $speechInput.keypress(function(event) {
         if (event.which == 13) {
           event.preventDefault();
@@ -49,8 +56,9 @@
         $(this).next().toggleClass("is-active");
         return false;
       });
-    });
-    function findImageURL(text) {
+});
+    
+  function findImageURL(text) {
         
           console.log("TEXT IS : " + text);
           //var imageValue="";
@@ -67,20 +75,18 @@
           displayImage.call(this,imageValue, captionValue);
         }
     
-     /*** FUNCTION TO DISPLAY APPROPRIATE IMAGE ON THE MODAL ***/
-     function displayImage(imageUrl,caption) {
+  /*** FUNCTION TO DISPLAY APPROPRIATE IMAGE ON THE MODAL ***/
+  function displayImage(imageUrl,caption) {
           
           modal.style.display = "block";
           console.log("CLICKED");
           imageUrl+=".jpg";
           modalImg.src = imageUrl;
           captionText.innerHTML = caption;
-          /** WILL GET CLOSED AUTOMATICALLY AFTER 10 Sec **/
-      }
-        // Get the <span> element that closes the modal
+  }
         
-        // When the user clicks on <span> (x), close the modal
-        window.onkeydown = function() { 
+  // When the user clicks on the clicker, close any modal
+  window.onkeydown = function() { 
           var keyCode = event.keyCode
           if (keyCode == 116 || keyCode == 27) {
           document.elementFromPoint(0,0).click();
@@ -90,11 +96,10 @@
           //modal4.style.display = "none";
           //modal5.style.display = "none";
           //modal6.style.display = "none";
-          
           }
-        }
+  }
       
-     function findVideoURL(text) {
+  function findVideoURL(text) {
         
           console.log("TEXT IS : " + text);
           //var imageValue="";
@@ -110,9 +115,10 @@
           console.log("IMAGE VALUE " + videoValue);
           console.log("CAPTION : " +captionValue);
           displayVideo.call(this, videoValue, captionValue);
-        }
-         /*** FUNCTION TO DISPLAY APPROPRIATE IMAGE ON THE MODAL ***/
-     function displayVideo(videoUrl,caption) {
+  }
+         
+  /*** FUNCTION TO DISPLAY APPROPRIATE IMAGE ON THE MODAL ***/
+  function displayVideo(videoUrl,caption) {
             
            modal2.style.display = "block";
            console.log("CLICKED again");
@@ -122,53 +128,49 @@
            setTimeout(function() {
              document.getElementById('vid01').play();
              console.log("video played");
-           }, 3000) 
+           }, 3000) ;
            captionText.innerHTML = caption;
-        }
+  }
     
-    //POWERPOINT 1
-    function showPpt1(text) {
+  //POWERPOINT 1
+  function showPpt1(text) {
 
            if(text == "showing ppt"){
              modal3.style.display = "block";
              console.log("CLICKED again and again");
-             var check = true;
-           }
-           if(check = true){
-             document.getElementById("myModal3").querySelector('iframe').contentWindow.document.body.focus();
-             console.log('iframe clicked');
-             check = false;
-           }
-        }
+           };
+  }
     
-    /*POWERPOINT 2
-    function showPpt2(text) {
+  /*POWERPOINT 2
+  function showPpt2(text) {
             
            if(text == ""){
            modal4.style.display = "block";
            console.log("CLICKED again and again");
            }
-        } */
+  } */
     
-    /*POWERPOINT 3
-    function showPpt3(text) {
+  /*POWERPOINT 3
+  function showPpt3(text) {
             
            if(text == ""){
            modal5.style.display = "block";
            console.log("CLICKED again and again and again");
            }
-        } */
+  } */
     
-    /*POWERPOINT 4
-    function showPpt4(text) {
+  /*POWERPOINT 4
+  function showPpt4(text) {
             
            if(text == ""){
            modal6.style.display = "block";
            console.log("CLICKED again and again and again and again");
            }
-        } */
+  } */
+
+//ALL CODE FROM HERE ON IS NOT TO BE EDITED AS IT IS WHAT CONNECTS US TO API.AI
+  function startRecognition() {
     
-    function startRecognition() {
       recognition = new webkitSpeechRecognition();
       recognition.continuous = false;
           recognition.interimResults = false;
@@ -192,31 +194,35 @@
       };
       recognition.lang = "en-US";
       recognition.start();
-    }
+  }
          
   
-    function stopRecognition() {
+  function stopRecognition() {
       if (recognition) {
         recognition.stop();
         recognition = null;
       }
       updateRec();
-    }
-    function switchRecognition() {
+  }
+    
+  function switchRecognition() {
       if (recognition) {
         stopRecognition();
       } else {
         startRecognition();
       }
     }
-    function setInput(text) {
+    
+  function setInput(text) {
       $speechInput.val(text);
       send();
-    }
-    function updateRec() {
+  }
+    
+  function updateRec() {
       $recBtn.text(recognition ? "Stop" : "Speak");
-    }
-    function send() {
+  }
+    
+  function send() {
       var text = $speechInput.val();
       $.ajax({
         type: "POST",
@@ -234,8 +240,9 @@
           respond(messageInternalError);
         }
       });
-    }
-    function prepareResponse(val) {
+  }
+    
+  function prepareResponse(val) {
       var debugJSON = JSON.stringify(val, undefined, 2),
         spokenResponse = val.result.speech;
       console.log("SPOKEN RESPONSE IS : " + spokenResponse);
@@ -299,13 +306,13 @@
       
       respond(spokenResponse);
       debugRespond(debugJSON);
-    } /// accha hoga sorry
-    function debugRespond(val) {
-      $("#response").text(val);
-      
-      
-    }
-    function respond(val) {
+  } /// accha hoga sorry
+    
+  function debugRespond(val) {
+      $("#response").text(val); 
+  }
+    
+  function respond(val) {
       if (val == "") {
         val = messageSorry;
       }
@@ -317,111 +324,111 @@
         window.speechSynthesis.speak(msg);
       }
       $("#spokenResponse").addClass("is-active").find(".spoken-response__text").html(val);
-    }
+  }
   
     
   </script>
   <link href="modal.css" rel="stylesheet">
   <style type="text/css">
-    html {
-      box-sizing: border-box;
-    }
-    *, *:before, *:after {
-      box-sizing: inherit;
-    }
-    body { 
-      background-color: #000000; 
-      font-family: "Titillium Web", Arial, sans-serif;
-      font-size: 20px;
-      margin: 0;
-    }
-    .container {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      -webkit-transform: translate(-50%, -50%);
-    }
-    input {
-      background-color: #fafafa;
-      border: 1px solid #000000;
-      color: #000000;
-      font-family: "Titillium Web";
-      font-size: 20px;
-      line-height: 43px;
-      padding: 0 0.75em;
-      width: 400px;
-      -webkit-transition: all 0.35s ease-in;
-    }
-    textarea {
-      background-color: #bbb;
-      border: 1px solid #000000;
-      color: #000000;
-      padding: 0.5em;
-      width: 100%;
-      -webkit-transition: all 0.35s ease-in;
-    }
-    input:active, input:focus, textarea:active, textarea:focus {
-      outline: 1px solid #48788B;
-    }
-    .btn {
-      background-color: #bbb;
-      border: 1px solid #000000;
-      color: #000000;
-      cursor: pointer;
-      display: inline-block;
-      font-family: "Titillium Web";
-      font-size: 20px;
-      line-height: 43px;
-      padding: 0 0.75em;
-      text-align: center;
-      text-transform: uppercase;
-      -webkit-transition: all 0.35s ease-in;
-    }
-    .btn:hover {
-      background-color: #bbb;
-      color: #000000;
-    }
-    .debug {
-      bottom: 0;
-      position: fixed;
-      right: 0;
-    }
-    .debug__content {
-      font-size: 14px;
-      max-height: 0;
-      overflow: hidden;
-      -webkit-transition: all 0.35s ease-in;
-    }
-    .debug__content.is-active {
-      display: block;
-      max-height: 500px;
-    }
-    .debug__btn {
-      width: 100%;
-    }
-    .spoken-response {
-      max-height: 0;
-      overflow: hidden;
-      -webkit-transition: all 0.35s ease-in;
-    }
-    .spoken-response.is-active {
-      max-height: 400px;
-    }
-    .spoken-response__text {
-      background-color: #ffff00;
-      color: #000000;
-      padding: 1em;
-    }
-    
-    
-    iframe {
+      
+      html {
+        box-sizing: border-box;
+      }
+      *, *:before, *:after {
+        box-sizing: inherit;
+      }
+      body { 
+        background-color: #000000; 
+        font-family: "Titillium Web", Arial, sans-serif;
+        font-size: 20px;
+        margin: 0;
+      }
+      .container {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+      }
+      input {
+        background-color: #fafafa;
+        border: 1px solid #000000;
+        color: #000000;
+        font-family: "Titillium Web";
+        font-size: 20px;
+        line-height: 43px;
+        padding: 0 0.75em;
+        width: 400px;
+        -webkit-transition: all 0.35s ease-in;
+      }
+      textarea {
+        background-color: #bbb;
+        border: 1px solid #000000;
+        color: #000000;
+        padding: 0.5em;
+        width: 100%;
+        -webkit-transition: all 0.35s ease-in;
+      }
+      input:active, input:focus, textarea:active, textarea:focus {
+        outline: 1px solid #48788B;
+      }
+      .btn {
+        background-color: #bbb;
+        border: 1px solid #000000;
+        color: #000000;
+        cursor: pointer;
+        display: inline-block;
+        font-family: "Titillium Web";
+        font-size: 20px;
+        line-height: 43px;
+        padding: 0 0.75em;
+        text-align: center;
+        text-transform: uppercase;
+        -webkit-transition: all 0.35s ease-in;
+      }
+      .btn:hover {
+        background-color: #bbb;
+        color: #000000;
+      }
+      .debug {
+        bottom: 0;
+        position: fixed;
+        right: 0;
+      }
+      .debug__content {
+        font-size: 14px;
+        max-height: 0;
+        overflow: hidden;
+        -webkit-transition: all 0.35s ease-in;
+      }
+      .debug__content.is-active {
         display: block;
-        margin: auto;
-        width: 70vw;
-        height: calc(70vw * 0.5826306914);
-    }
+        max-height: 500px;
+      }
+      .debug__btn {
+        width: 100%;
+      }
+      .spoken-response {
+        max-height: 0;
+        overflow: hidden;
+        -webkit-transition: all 0.35s ease-in;
+      }
+      .spoken-response.is-active {
+        max-height: 400px;
+      }
+      .spoken-response__text {
+        background-color: #ffff00;
+        color: #000000;
+        padding: 1em;
+      }
+
+
+      iframe {
+          display: block;
+          margin: auto;
+          width: 70vw;
+          height: calc(70vw * 0.5826306914);
+      }
   </style>
-   <link rel="stylesheet" media="screen" href="css/style.css">
   </head>
  
 <body>
@@ -444,9 +451,7 @@
     </div>
   </div>
   
-  
-  
-  
+  <!--IMAGE DIV-->
   <div id="myModal" class="modal">
 
     <!-- The Close Button -->
@@ -459,7 +464,8 @@
     <div id="caption"></div>
       
   </div>
-    
+  
+  <!--VIDEO DIV-->
   <div id="myModal2" class="modal">
 
     <!-- The Close Button -->
@@ -472,7 +478,8 @@
     <div id="caption"></div>
       
   </div>
-    
+  
+  <!--PPT1 DIV-->
   <div id="myModal3" class="modal">
 
     <!-- The Close Button -->
@@ -488,7 +495,7 @@
       
    </div>
     
-   <!-- 2ND POWER POINT
+   <!-- PPT2 DIV
    <div id="myModal4" class="modal">
 
     <span class="close" onclick="document.getElementById('myModal3').style.display='none'">&times;</span>
@@ -500,7 +507,7 @@
    </div>
    -->
    
-   <!-- 3RD POWER POINT
+   <!-- PPT3 DIV
    <div id="myModal5" class="modal">
 
     <span class="close" onclick="document.getElementById('myModal3').style.display='none'">&times;</span>
@@ -512,7 +519,7 @@
    </div>
    -->
    
-   <!-- 4TH POWER POINT
+   <!-- PPT4 DIV
    <div id="myModal6" class="modal">
 
     <span class="close" onclick="document.getElementById('myModal3').style.display='none'">&times;</span>
@@ -525,9 +532,6 @@
    -->
 
   <link href="https://fonts.googleapis.com/css?family=Titillium+Web:200" rel="stylesheet" type="text/css">
-  
- 
-    
 
 </body>
 </html>
