@@ -126,13 +126,12 @@
     function showPpt1(text) {
 
            if(text == "showing ppt"){
-             //document.getElementById("iframe1").contentWindow.document.body.focus();
              modal3.style.display = "block";
              console.log("CLICKED again and again");
              var check = true;
            }
            if(check = true){
-             document.getElementById("myModal3").querySelector('iframe').contentWindow.click();
+             document.getElementById("myModal3").querySelector('iframe').contentWindow.document.body.focus();
              console.log('iframe clicked');
              check = false;
            }
